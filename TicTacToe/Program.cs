@@ -19,6 +19,7 @@ namespace TicTacToe
         public static bool player2Turn = false;
         public static bool gameIsRunning = true;
         public static int selection;
+        public static string winner = null;
 
         static void Main(string[] args)
         {
@@ -88,7 +89,9 @@ namespace TicTacToe
                     player2Turn = false;
                     player1Turn = true;
                 }
+                hasWon();
             }
+            Console.WriteLine("{0}, YOU ARE THE WINNER!", winner);
         }
 
        
@@ -203,6 +206,34 @@ namespace TicTacToe
             {
                 gameBoard[x, y] = 'O';
             }
+        }
+        public static void hasWon()
+        {
+            if (gameBoard[0, 0] == 'X' && gameBoard[0, 1] == 'X' && gameBoard[0, 2] == 'X' ||
+                gameBoard[1, 0] == 'X' && gameBoard[1, 1] == 'X' && gameBoard[1, 2] == 'X' ||
+                gameBoard[2, 0] == 'X' && gameBoard[2, 1] == 'X' && gameBoard[2, 2] == 'X' ||
+                gameBoard[0, 0] == 'X' && gameBoard[1, 0] == 'X' && gameBoard[2, 0] == 'X' ||
+                gameBoard[0, 1] == 'X' && gameBoard[1, 1] == 'X' && gameBoard[2, 1] == 'X' ||
+                gameBoard[0, 2] == 'X' && gameBoard[1, 2] == 'X' && gameBoard[2, 2] == 'X' ||
+                gameBoard[0, 0] == 'X' && gameBoard[1, 1] == 'X' && gameBoard[2, 2] == 'X' ||
+                gameBoard[0, 2] == 'X' && gameBoard[1, 1] == 'X' && gameBoard[2, 0] == 'X')
+            {
+                gameIsRunning = false;
+                winner = "Player 1";
+            }
+            else if (gameBoard[0, 0] == 'O' && gameBoard[0, 1] == 'O' && gameBoard[0, 2] == 'O' ||
+                gameBoard[1, 0] == 'O' && gameBoard[1, 1] == 'O' && gameBoard[1, 2] == 'O' ||
+                gameBoard[2, 0] == 'O' && gameBoard[2, 1] == 'O' && gameBoard[2, 2] == 'O' ||
+                gameBoard[0, 0] == 'O' && gameBoard[1, 0] == 'O' && gameBoard[2, 0] == 'O' ||
+                gameBoard[0, 1] == 'O' && gameBoard[1, 1] == 'O' && gameBoard[2, 1] == 'O' ||
+                gameBoard[0, 2] == 'O' && gameBoard[1, 2] == 'O' && gameBoard[2, 2] == 'O' ||
+                gameBoard[0, 0] == 'O' && gameBoard[1, 1] == 'O' && gameBoard[2, 2] == 'O' ||
+                gameBoard[0, 2] == 'O' && gameBoard[1, 1] == 'O' && gameBoard[2, 0] == 'O')
+                {
+                    gameIsRunning = false;
+                    winner = "Player 2";
+                }
+
         }
     }
 }
