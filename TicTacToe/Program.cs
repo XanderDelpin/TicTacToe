@@ -15,24 +15,26 @@ namespace TicTacToe
             {'4','5','6'},
             {'7','8','9'}
         };
-        public static bool  player1Turn = true;
-        public static bool player2Turn = false;
-        public static bool gameIsRunning = true;
-        public static int selection;
-        public static string winner = null;
+        private static bool  player1Turn = true;
+        private static bool player2Turn = false;
+        private static bool gameIsRunning = true;
+        private static int selection;
+        private static string winner = null;
 
         static void Main(string[] args)
         {
 
             drawBoard();
             checkInput();
+            printInfo();
+
             Console.Read();
 
         }
 
         public static void drawBoard()
         {
-            Console.WriteLine("     |   |   ");
+            Console.WriteLine("\n     |   |   ");
             Console.WriteLine("   {0} | {1} | {2} ",gameBoard[0,0],gameBoard[0,1],gameBoard[0,2]);
             Console.WriteLine("  ___|___|___");
             Console.WriteLine("     |   |   ");
@@ -47,7 +49,7 @@ namespace TicTacToe
             {
                 if (player1Turn)
                 {
-                    Console.WriteLine("Player 1, choose a number!");
+                    Console.WriteLine("\n\nPlayer 1, choose a number!");
                     string inp = Console.ReadLine();
                     try
                     {
@@ -69,7 +71,7 @@ namespace TicTacToe
                 }
                 else if (player2Turn)
                 {
-                    Console.WriteLine("Player 2, choose a number!");
+                    Console.WriteLine("\n\nPlayer 2, choose a number!");
                     string inp = Console.ReadLine();
                     try
                     {
@@ -91,7 +93,8 @@ namespace TicTacToe
                 }
                 hasWon();
             }
-            Console.WriteLine("{0}, YOU ARE THE WINNER!", winner);
+            Console.WriteLine("\n{0}, YOU ARE THE WINNER!", winner);
+            
         }
 
        
@@ -235,5 +238,15 @@ namespace TicTacToe
                 }
 
         }
+        public static void printInfo()
+        {
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine("\nRestart application to play again");
+            Console.WriteLine("\n-------------------------------------------");
+            Console.WriteLine("\nThis short, simple game was made by Alexander Delpin");
+
+
+        }
+
     }
 }
