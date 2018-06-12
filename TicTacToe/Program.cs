@@ -71,43 +71,40 @@ namespace TicTacToe
         {
             if (selection == 1)
             {
-                if (alreadySelected(0,0))
-                {
 
-                }
-                gameBoard[0, 0] = 'X';
+                checkX(0, 0);
             }
             else if (selection == 2)
             {
-                gameBoard[0, 1] = 'X';
+                checkX(0, 1);
             }
             else if (selection == 3)
             {
-                gameBoard[0, 2] = 'X';
+                checkX(0, 2);
             }
             else if (selection == 4)
             {
-                gameBoard[1, 0] = 'X';
+                checkX(1, 0);
             }
             else if (selection == 5)
             {
-                gameBoard[1, 1] = 'X';
+                checkX(1, 1);
             }
             else if (selection == 6)
             {
-                gameBoard[1, 2] = 'X';
+                checkX(1, 2);
             }
             else if (selection == 7)
             {
-                gameBoard[2, 0] = 'X';
+                checkX(2, 0);
             }
             else if (selection == 8)
             {
-                gameBoard[2, 1] = 'X';
+                checkX(2, 1);
             }
             else if (selection == 9)
             {
-                gameBoard[2, 2] = 'X';
+                checkX(2, 2);
             }
             drawBoard();
         }
@@ -118,6 +115,17 @@ namespace TicTacToe
                 return true;
             }
             return false;
+        }
+        public static void checkX(int x, int y)
+        {
+            if (alreadySelected(x, y))
+            {
+                Console.WriteLine("-----------------------------------------------");
+                Console.WriteLine("\nPlease choose an empty space!");    
+            } else
+            {
+                gameBoard[x, y] = 'X';
+            }
         }
     }
 }
