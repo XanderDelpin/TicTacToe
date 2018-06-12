@@ -63,15 +63,40 @@ namespace TicTacToe
                         continue;
                     }
                     drawX();
-
+                    player1Turn = false;
+                    player2Turn = true;
+                }
+                else if (player2Turn)
+                {
+                    Console.WriteLine("Player 2, choose a number!");
+                    string inp = Console.ReadLine();
+                    try
+                    {
+                        selection = Int32.Parse(inp);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Please only enter a number");
+                        continue;
+                    }
+                    if (selection < 1 || selection > 9)
+                    {
+                        Console.WriteLine("Please only enter a number between 1 and 9");
+                        continue;
+                    }
+                    drawO();
+                    player2Turn = false;
+                    player1Turn = true;
                 }
             }
         }
+
+       
+
         public static void drawX()
         {
             if (selection == 1)
             {
-
                 checkX(0, 0);
             }
             else if (selection == 2)
@@ -108,6 +133,46 @@ namespace TicTacToe
             }
             drawBoard();
         }
+        public static void drawO()
+        {
+            if (selection == 1)
+            {
+                checkO(0, 0);
+            }
+            else if (selection == 2)
+            {
+                checkO(0, 1);
+            }
+            else if (selection == 3)
+            {
+                checkO(0, 2);
+            }
+            else if (selection == 4)
+            {
+                checkO(1, 0);
+            }
+            else if (selection == 5)
+            {
+                checkO(1, 1);
+            }
+            else if (selection == 6)
+            {
+                checkO(1, 2);
+            }
+            else if (selection == 7)
+            {
+                checkO(2, 0);
+            }
+            else if (selection == 8)
+            {
+                checkO(2, 1);
+            }
+            else if (selection == 9)
+            {
+                checkO(2, 2);
+            }
+            drawBoard();
+        }
         public static bool alreadySelected(int x, int y)
         {
             if (gameBoard[x,y] == 'X'|| gameBoard[x,y] == 'O')
@@ -125,6 +190,18 @@ namespace TicTacToe
             } else
             {
                 gameBoard[x, y] = 'X';
+            }
+        }
+        public static void checkO(int x, int y)
+        {
+            if (alreadySelected(x, y))
+            {
+                Console.WriteLine("-----------------------------------------------");
+                Console.WriteLine("\nPlease choose an empty space!");
+            }
+            else
+            {
+                gameBoard[x, y] = 'O';
             }
         }
     }
