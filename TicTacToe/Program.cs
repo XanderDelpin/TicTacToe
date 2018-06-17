@@ -20,6 +20,7 @@ namespace TicTacToe
         private static bool gameIsRunning = true;
         private static int selection;
         private static string winner = null;
+        private static bool isStalemate = false;
 
         static void Main(string[] args)
         {
@@ -68,6 +69,7 @@ namespace TicTacToe
                     drawX();
                     player1Turn = false;
                     player2Turn = true;
+
                 }
                 else if (player2Turn)
                 {
@@ -92,9 +94,15 @@ namespace TicTacToe
                     player1Turn = true;
                 }
                 hasWon();
+                checkForTie();
             }
-            Console.WriteLine("\n{0}, YOU ARE THE WINNER!", winner);
-            
+            if (isStalemate)
+            {
+                Console.WriteLine("The game ends with a tie!");
+            }
+            else{
+                Console.WriteLine("\n{0}, YOU ARE THE WINNER!", winner);
+            }
         }
 
        
@@ -238,6 +246,37 @@ namespace TicTacToe
                 }
 
         }
+        public static bool isTie()
+        {
+            int counter = 0;
+            foreach (char n in gameBoard)
+            {
+                if (n == 'O' || n == 'X')
+                {
+                    counter++;
+                }
+            }
+
+
+            if (counter == 9)
+            {
+                isStalemate = true;
+                return true;
+            }
+
+            return false; 
+        }
+
+        public static void checkForTie()
+        {
+            if (isTie())
+            {
+                gameIsRunning = false;
+                
+            }
+        }
+
+ 
         public static void printInfo()
         {
             Console.WriteLine("-------------------------------------------");
